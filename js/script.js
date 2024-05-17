@@ -7,22 +7,22 @@
 
 "use strict"
 
-/*
-funsction
- */
-
 function cookiesClicker() {
-  const cookie = document.getElementById("cookie")
+  const cookies = document.getElementById("cookies")
   const clickCount = document.getElementById("click-count")
 
-  // Check if there is a score in local storage, otherwise set it to 0
-  let score = parseInt(localStorage.getItem("score")) || 0
+  // Retrieve click count from localStorage or default to 0
+  let currentClickCount = parseInt(localStorage.getItem("cookiesClicker")) || 0
 
-  if (localStorage.cookiesClicker) {
-    localStorage.cookiesClicker = Number(localStorage.cookiesClicker) + 1
-  } else {
-    localStorage.cookiesClicker = 1
-  }
-  document.getElementById(result).innerHTML =
-    "Yoru score is:" + localStorage.cookiesClicker
+  // Increment click count
+  currentClickCount++
+
+  // Update localStorage with new click count
+  localStorage.setItem("cookiesClicker", currentClickCount)
+
+  // Update click count displayed on the webpage
+  clickCount.innerHTML = currentClickCount
 }
+
+// Add event listener to the cookie image to call cookiesClicker function on click
+document.getElementById("cookies").addEventListener("click", cookiesClicker)
